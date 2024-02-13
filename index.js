@@ -43,7 +43,7 @@ function getBookAuthorByIndex(index, books) {
 function calcTotalPages(libraries) {
     let totalPages = 0n;
     libraries.forEach(library => {
-        totalPages += library.books * library.avgPagesPerBook;
+        totalPages += BigInt(library.books) * BigInt(library.avgPagesPerBook);
     });
     return totalPages;
 }

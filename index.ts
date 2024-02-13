@@ -16,8 +16,8 @@ interface Book {
 
 interface Library {
     lib: string;
-    books: bigint;
-    avgPagesPerBook: bigint;
+    books: number | bigint;
+    avgPagesPerBook: number | bigint;
 }
 
 function getAllBooks(): Book[] {
@@ -62,7 +62,7 @@ function calcTotalPages(libraries: Library[]): bigint {
     let totalPages: bigint = 0n;
 
     libraries.forEach(library => {
-        totalPages += library.books * library.avgPagesPerBook;
+        totalPages += BigInt(library.books) * BigInt(library.avgPagesPerBook);
     });
 
     return totalPages;
@@ -85,3 +85,4 @@ const libraries: Library[] = [
     { lib: 'libName3', books: 3_000_000_000n, avgPagesPerBook: 280n }
 ];
 console.log(`Загальна кількість сторінок у всіх бібліотеках: ${calcTotalPages(libraries)}`);
+
